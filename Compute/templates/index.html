@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flask App</title>
+        {{ dropzone.load() }}
+        {{ dropzone.style('border: 2px dashed green; margin: 50px 50px 0px 50px; min-height: 400px;') }}
+        <style>
+
+.reciever{
+  background-color: green ;
+  border: none;
+
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px 40px;
+  margin-left:47%;
+  cursor: pointer;
+  border-radius: 8px;
+
+}
+a{
+color:white;
+text-decoration: none;
+}
+p{
+font-size:24px;
+text-align:center;
+color:green;
+}
+    }
+</style>
+    </head>
+    <body>
+        {{ dropzone.create(action_view='index') }}
+        <br>
+        <p>OR</p><br>
+        <button class="reciever"><a href="/receiver">Receive</button>
+    </body>
+</html>
