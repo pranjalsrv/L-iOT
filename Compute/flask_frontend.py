@@ -1,8 +1,12 @@
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-
+from serial_receiver import serial_receive
+from serial_transmitter import serial_transmit
 import os
+
+PORT = "COM8"
+BAUD_RATE = 9600
 
 app = Flask(__name__)
 dropzone = Dropzone(app)
@@ -54,7 +58,7 @@ def index():
 
 @app.route('/results', methods = ['GET','POST'])
 def results():
-    if request.method=='POST':
+    if request.method == 'POST':
         #ENTER CODE TO SEND TO ARDUINO
         print('sending to arduino')
 
@@ -72,7 +76,17 @@ def results():
     return render_template('results.html', file_urls=file_urls)
 
 
-@app.route('/receiver', methods = ['GET', 'POST'])
+@app.route('/sendtext', methods=['GET', 'POST'])
+def sendtext():
+    if request.method == 'POST':
+        serial_transmit(PORT, BAUD_RATE, request.form['sendermessage'])
+    return render_template('sendtext.html')
+
+@app.route('/receivetext', methods=['GET', 'POST'])
+def receivetext():
+
+
+@app.route('/receiver', methods=['GET', 'POST'])
 def receiver():
     return "<p>RECEIVING</p>"
 
