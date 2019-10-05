@@ -1,0 +1,45 @@
+<style>
+    .send{
+  background-color: green ;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left:44%;
+}
+.back{
+  background-color: black ;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+a{
+color:white;
+text-decoration: none;
+}
+    }
+</style>
+<div>
+    {% for file_url in file_urls %}
+    <center><img style="height: 350px" src="{{ file_url }}"></center>
+    {% endfor %}
+</div>
+<br>
+<br>
+<br>
+<br>
+<button type="submit" value="Send" class="send">SEND</button>
+<button class="back"><a href="{{ url_for('index') }}">BACK</a></button>
